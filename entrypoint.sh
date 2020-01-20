@@ -8,15 +8,15 @@ set -eo
 # IMPORTANT: while secrets are encrypted and not viewable in the GitHub UI,
 # they are by necessity provided as plaintext in the context of the Action,
 # so do not echo or use debug mode unless you want your secrets exposed!
-if [[ -z "$SVN_USERNAME" ]]; then
-	echo "Set the SVN_USERNAME secret"
-	exit 1
-fi
+#if [[ -z "$SVN_USERNAME" ]]; then
+	#echo "Set the SVN_USERNAME secret"
+	#exit 1
+#fi
 
-if [[ -z "$SVN_PASSWORD" ]]; then
-	echo "Set the SVN_PASSWORD secret"
-	exit 1
-fi
+#if [[ -z "$SVN_PASSWORD" ]]; then
+	#echo "Set the SVN_PASSWORD secret"
+	#exit 1
+#fi
 
 # Allow some ENV variables to be customized
 if [[ -z "$SLUG" ]]; then
@@ -143,6 +143,6 @@ svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm % > /dev/null
 svn status
 
 echo "➤ Committing files..."
-svn commit -m "Updating readme/assets from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+#svn commit -m "Updating readme/assets from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 echo "✓ Plugin deployed!"
